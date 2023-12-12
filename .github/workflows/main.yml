@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install apache-airflow
-        airflow initdb
+        airflow db init
 
     - name: Create DAGs directory
       run: mkdir -p $GITHUB_WORKSPACE/dags/
@@ -29,8 +29,5 @@ jobs:
     - name: Copy DAG file
       run: cp my_dag.py $GITHUB_WORKSPACE/dags/
 
-    - name: Start Airflow Web Server
-      run: airflow webserver --port 8080 --host 0.0.0.0
-
-    - name: Display Airflow UI URL
-      run: echo "Airflow UI URL: http://localhost:8080"
+    - name: Run Airflow
+      run: airflow scheduler --daemon
