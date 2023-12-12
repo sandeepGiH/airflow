@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install apache-airflow
-        airflow initdb
+        airflow db init
 
     - name: Create DAGs directory
       run: mkdir -p $GITHUB_WORKSPACE/dags/
