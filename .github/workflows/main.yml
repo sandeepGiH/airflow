@@ -21,7 +21,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip install apache-airflow
-        airflow db init
+        airflow initdb
+
+    - name: Create DAGs directory
+      run: mkdir -p $AIRFLOW_HOME/dags/
 
     - name: Copy DAG file
       run: cp my_dag.py $AIRFLOW_HOME/dags/
