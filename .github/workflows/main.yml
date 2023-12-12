@@ -29,13 +29,5 @@ jobs:
     - name: Copy DAG file
       run: cp my_dag.py $GITHUB_WORKSPACE/dags/
 
-    - name: Start Airflow Scheduler and Web Server
-      run: |
-        airflow scheduler --daemon
-        airflow webserver --daemon -p 8080
-
-    - name: Wait for Airflow to Start
-      run: sleep 10  # Adjust the sleep duration based on your environment
-
-    - name: Display Airflow Web UI URL
-      run: echo "Airflow Web UI: http://localhost:8080/"
+    - name: Run Airflow
+      run: airflow scheduler --daemon
